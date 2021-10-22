@@ -12,13 +12,6 @@ public class ProfileWidgetForm extends BaseAbstractForm {
         PageFactory.initElements(driver.getDriver(), this);
     }
 
-    public static String FULLNAME = "Pawel Jakubus";
-    public static String POSITION = "Trainee Test Engineer,Quality Assurance";
-    public static String FOLLOWERS = "6";
-    public static String FOLLOW = "7";
-    public static String TEAMMATES = "204";
-    public static String COMMUNITIES = "24";
-
     @FindBy(xpath = "/html/body/div[3]/div/div/div[2]/div/div[1]/div[1]/div/div/div[2]/h2")
     public WebElement userFullName;
     @FindBy(xpath = "/html/body/div[3]/div/div/div[2]/div/div[1]/div[1]/div/div/div[2]/p")

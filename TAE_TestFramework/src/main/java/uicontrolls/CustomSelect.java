@@ -25,11 +25,7 @@ public class CustomSelect extends BaseControl {
 
     public void selectItem(String itemName) {
         getLogger().info(String.format("Trying to select dropdown item '%s' of '%s' dropdown", itemName, super.name));
-        try {
-            searchItem(itemName, DEFAULT_TIMEOUT);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        searchItem(itemName, DEFAULT_TIMEOUT);
         clickElement(itemName);
         getLogger().info(String.format("Dropdown item '%s' has been selected in '%s' dropdown ", itemName, super.name));
     }
@@ -39,7 +35,7 @@ public class CustomSelect extends BaseControl {
         return driver.getElement(new ByChained(super.locator, By.xpath("./span[@role='textbox']"))).getText();
     }
 
-    public void searchItem(String itemName, int timeOut) throws InterruptedException {
+    public void searchItem(String itemName, int timeOut) {
         getLogger().info(String.format("Expand dropdown '%s'", super.name));
         click(timeOut);
         getLogger().info(String.format("Dropdown '%s' expanded", super.name));
@@ -49,7 +45,7 @@ public class CustomSelect extends BaseControl {
         input.sendKeys(itemName);
         getLogger().info(String.format("Wait results will be displayed for '%s' dropdown with item '%s'", super.name, itemName));
         new WebDriverWait(driver.getDriver(), timeOut, DEFAULT_SLEEP).until(ExpectedConditions.attributeContains(
-                new ByChained(base_locator, By.xpath(SEARCH_RESULT), By.xpath("./ul/li[1]")),"class","\"select2-results__option select2-results__\""));
+                new ByChained(base_locator, By.xpath(SEARCH_RESULT), By.xpath("./ul/li[1]")),"class","select2-results__option select2-results__"));
     }
 
     public void clickElement(String itemName) {

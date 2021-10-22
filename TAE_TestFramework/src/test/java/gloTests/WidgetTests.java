@@ -2,7 +2,7 @@ package gloTests;
 
 import baseTest.BaseAbstractChromeTest;
 import entities.User;
-import forms.Banner;
+import forms.BannerForm;
 import forms.ProfileWidgetForm;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
@@ -15,7 +15,14 @@ import taException.TAUnknownBrowserException;
             super();
         }
 
-        private Banner banner;
+        private BannerForm banner;
+
+        public static String FULLNAME = "Pawel Jakubus";
+        public static String POSITION = "Trainee Test Engineer,Quality Assurance";
+        public static String FOLLOWERS = "6";
+        public static String FOLLOW = "7";
+        public static String TEAMMATES = "204";
+        public static String COMMUNITIES = "24";
 
         @BeforeTest
         public void setUpTest() {
@@ -28,43 +35,43 @@ import taException.TAUnknownBrowserException;
         }
 
         public void skipBanner() {
-            banner = new Banner(getDriver());
+            banner = new BannerForm(getDriver());
             banner.skipBanner.click();
         }
 
         @Test
         public void testUserFullName() {
             ProfileWidgetForm gloHome = new ProfileWidgetForm(getDriver());
-            Assert.assertEquals(gloHome.getUserFullName(),ProfileWidgetForm.FULLNAME);
+            Assert.assertEquals(gloHome.getUserFullName(),FULLNAME);
         }
 
         @Test
         public void testUserPosition() {
             ProfileWidgetForm gloHome = new ProfileWidgetForm(getDriver());
-            Assert.assertEquals(gloHome.getUserPosition(),ProfileWidgetForm.POSITION);
+            Assert.assertEquals(gloHome.getUserPosition(),POSITION);
         }
 
         @Test
         public void testUserFollowers() {
             ProfileWidgetForm gloHome = new ProfileWidgetForm(getDriver());
-            Assert.assertEquals(gloHome.getUserFollowers(),ProfileWidgetForm.FOLLOWERS);
+            Assert.assertEquals(gloHome.getUserFollowers(),FOLLOWERS);
         }
 
         @Test
         public void testUserFollow() {
             ProfileWidgetForm gloHome = new ProfileWidgetForm(getDriver());
-            Assert.assertEquals(gloHome.getUserFollow(),ProfileWidgetForm.FOLLOW);
+            Assert.assertEquals(gloHome.getUserFollow(),FOLLOW);
         }
 
         @Test
         public void testUserTeammates() {
             ProfileWidgetForm gloHome = new ProfileWidgetForm(getDriver());
-            Assert.assertEquals(gloHome.getUserTeammates(),ProfileWidgetForm.TEAMMATES);
+            Assert.assertEquals(gloHome.getUserTeammates(),TEAMMATES);
         }
 
         @Test
         public void testUserCommunities() {
             ProfileWidgetForm gloHome = new ProfileWidgetForm(getDriver());
-            Assert.assertEquals(gloHome.getUserCommunities(),ProfileWidgetForm.COMMUNITIES);
+            Assert.assertEquals(gloHome.getUserCommunities(),COMMUNITIES);
         }
 }

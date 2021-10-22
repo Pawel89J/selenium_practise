@@ -4,6 +4,7 @@ import core.TAEDriver;
 import baseControlls.BaseControl;
 import entities.Travellers;
 import org.openqa.selenium.By;
+import pages.HotelsPage;
 
 public class TravellerControl extends BaseControl {
 
@@ -16,7 +17,7 @@ public class TravellerControl extends BaseControl {
     }
 
     public void setTravellers(Travellers travellers) {
-        //this method should set travellers controls
-        //to the state of passed travellers object
+        HotelsPage hotelsPage = new HotelsPage(driver);
+        hotelsPage.setTravellers(travellers);
     }
 }
